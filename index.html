@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeafyLeaf</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url("https://www.example.com/background.jpg"); /* Replace with your background image URL */
+        background-size: cover;
+        color: #ffffff;
+        text-align: center;
+        padding: 50px;
+      }
+      h1 {
+        font-size: 3em;
+        margin-bottom: 0.5em;
+      }
+      p {
+        font-size: 1.5em;
+        margin: 0.5em 0;
+      }
+      .container {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px auto;
+        max-width: 100vw;
+        height: 70vh;
+      }
+      .header-conatiner {
+        margin-bottom: 20px;
+      }
+      .image-container {
+        margin-bottom: 20px;
+      }
+      .image-container label {
+        font-size: 1.2em;
+      }
+      .image-container input {
+        margin: 10px 0;
+      }
+      .detail-container {
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+      #imageUpload {
+        margin: 20px 0;
+      }
+
+      #submitBtn {
+        background-color: #4caf50;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+      }
+      #result {
+        margin-top: 20px;
+        font-size: 1.2em;
+      }
+      .container {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-conatiner">
+        <h1>LeafyLeaf</h1>
+        <p>Plant Disease Identification System</p>
+      </div>
+      <div class="image-container">
+        <label for="imageUpload">Upload an image:</label>
+        <input type="file" id="imageUpload" accept="image/*" />
+        <button id="submitBtn">Submit</button>
+        <p id="img"></p>
+        <p id="result"></p>
+      </div>
+      <div class="detail-container">
+        <p>
+          LeafyLeaf is an system designed to identify plant diseases through
+          image analysis. Utilizing cutting-edge machine learning algorithms,
+          LeafyLeaf enables farmers and gardeners to quickly and accurately
+          diagnose a variety of plant ailments. Users can simply upload images
+          of affected plants, and the system analyzes visual symptoms to
+          identify potential diseases, providing detailed information and
+          treatment suggestions. This technology helps in early detection,
+          reducing crop loss, and improving overall plant health, making it an
+          essential tool for sustainable agriculture and effective plant
+          management.
+        </p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      document
+        .getElementById("submitBtn")
+        .addEventListener("click", function () {
+          const fileInput = document.getElementById("imageUpload");
+          const img = document.getElementById("img");
+
+          if (fileInput.files.length === 0) {
+            result.textContent = "No file selected!";
+            return;
+          }
+
+          const file = fileInput.files[0];
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            const image = new Image();
+            image.src = e.target.result;
+            img.innerHTML = "";
+            img.appendChild(image);
+          };
+
+          reader.readAsDataURL(file);
+        });
+    </script>
+  </body>
+</html>
